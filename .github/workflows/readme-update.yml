@@ -1,0 +1,15 @@
+# .github/workflows/readme-update.yml
+
+name: README Update Detector
+
+on:
+  push:
+    paths:
+      - "README.md"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify README update
+        run: echo "📘 README updated!"
