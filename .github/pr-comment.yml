@@ -1,0 +1,22 @@
+# .github/workflows/pr-comment.yml
+
+name: PR Welcome Comment
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add a comment to new PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "🎉 Thanks for your contribution! We’ll review it soon."
+            })
